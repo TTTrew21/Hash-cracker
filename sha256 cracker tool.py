@@ -40,9 +40,14 @@ def guess():
 			break
 	if s == 'true':
 		print(f'{bcolors.OK}{bcolors.BOLD}Attack successful.{bcolors.RESET}')
-		return
+		return True, hashed_string
 	print(f'{bcolors.FAIL}{bcolors.BOLD}Attack failed.{bcolors.RESET}')
+	return False
 
 i = input(f"{bcolors.WARNING}Enter to start attack.{bcolors.RESET}")
 os.system('cls')
-guess()	
+a, b = guess()
+if a:
+	n = int(input("[0]exit\n[1]print the sha256\n"))
+	if n == 0: exit()
+	elif n == 1: print(b)
