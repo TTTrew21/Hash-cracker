@@ -24,25 +24,25 @@ with open(str(f), mode='r') as file:
 	d = [line.strip() for line in file.readlines()]
 
 def guess():
-	s = 'false'
+	s = False
 
 	for i in range(0, len(d)):
 
 		hashed_string = hashlib.sha256(d[i].encode()).hexdigest()
-        
+
 		if hashed_string == ans:
-			s = 'true'
+			s = True
 		if setting == "y":
 			print(f'Disabled/{d[i]}/{s}')
 		else: print(f'{hashed_string}/{d[i]}/{s}')
 
-		if s == 'true':
+		if s:
 			break
-	if s == 'true':
+	if s:
 		print(f'{bcolors.OK}{bcolors.BOLD}Attack successful.{bcolors.RESET}')
 		return True, hashed_string
 	print(f'{bcolors.FAIL}{bcolors.BOLD}Attack failed.{bcolors.RESET}')
-	return False
+	return False, ans
 
 i = input(f"{bcolors.WARNING}Enter to start attack.{bcolors.RESET}")
 os.system('cls')
