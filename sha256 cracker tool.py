@@ -12,18 +12,9 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-os.system('cls')
-ans = str.lower(input(f"{bcolors.WARNING}{bcolors.BOLD}target(SHA256):{bcolors.RESET}"))
-setting = str.lower(input("Disable sha256. (y/n)"))
 
-d = []
 
-os.system('cls')
-f=input("Password file:")
-with open(str(f), mode='r') as file:
-	d = [line.strip() for line in file.readlines()]
-
-def guess():
+def guess(d, ans, setting):
 	s = False
 
 	for i in range(0, len(d)):
@@ -32,22 +23,43 @@ def guess():
 
 		if hashed_string == ans:
 			s = True
+			break
 		if setting == "y":
 			print(f'Disabled/{d[i]}/{s}')
-		else: print(f'{hashed_string}/{d[i]}/{s}')
-
-		if s:
-			break
+		else:
+			print(f'{hashed_string}/{d[i]}/{s}')
+		
 	if s:
 		print(f'{bcolors.OK}{bcolors.BOLD}Attack successful.{bcolors.RESET}')
 		return True, hashed_string
+
 	print(f'{bcolors.FAIL}{bcolors.BOLD}Attack failed.{bcolors.RESET}')
 	return False, ans
 
-i = input(f"{bcolors.WARNING}Enter to start attack.{bcolors.RESET}")
-os.system('cls')
-a, b = guess()
-if a:
-	n = int(input("[0]exit\n[1]print the sha256\n"))
-	if n == 0: exit()
-	elif n == 1: print(b)
+def round():
+	os.system('cls')
+	ans = str.lower(input(f"{bcolors.WARNING}{bcolors.BOLD}target(SHA256):{bcolors.RESET}"))
+	setting = str.lower(input("Disable sha256. (y/n)"))
+
+	dic = []
+
+	os.system('cls')
+	f = input("Password file:")
+	with open(str(f), mode='r') as file:
+		dic = [line.strip() for line in file.readlines()]
+
+	i = input(f"{bcolors.WARNING}Enter to start attack.{bcolors.RESET}")
+	os.system('cls')
+	a, b = guess(dic, ans, setting)
+
+	if a:
+		def ques():
+			n = int(input("[0]exit\n[1]print the sha256\n[2]try again\n"))
+			if n == 0: exit()
+			elif n == 1:
+				print(b)
+				ques()
+			elif n == 2: round()
+		ques()
+
+round()
