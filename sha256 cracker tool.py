@@ -19,13 +19,13 @@ def guess(d, ans):
 
 	print("Trying...")
 
-	for i in range(0, len(d)):
+	for i in d:
 
-		hashed_string = hashlib.sha256(d[i].encode()).hexdigest()
+		hashed_string = hashlib.sha256(i.encode()).hexdigest()
 
 		if hashed_string == ans:
 			s = True
-			print(f'{hashed_string}/{d[i]}/{s}')
+			print(f'{hashed_string}/{i}/{s}')
 			break
 			
 	if s:
@@ -51,12 +51,9 @@ def round():
 	a, b = guess(dic, ans)
 
 	def ques():
-		n = int(input("[0]exit\n[1]print the sha256\n[2]try again\n"))
+		n = int(input("[0]exit\n[1]try again\n"))
 		if n == 0: exit()
-		elif n == 1:
-			print(b)
-			ques()
-		elif n == 2: round()
+		elif n ==1: round()
 	ques()
 
 round()
