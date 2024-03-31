@@ -39,8 +39,9 @@ def round():
 	os.system('cls')
 	print(
 	f"""{bcolors.OKCYAN}{bcolors.BOLD}
-		|    Welcome!   |
-		| last 2024/3/21|
+		|    Welcome     |
+		| last 2024/3/21 |
+		|    by Jeff3300 |
 	{bcolors.RESET}""")
 	ans = str.lower(input(f"{bcolors.WARNING}{bcolors.BOLD}target(SHA256):{bcolors.RESET}"))
 
