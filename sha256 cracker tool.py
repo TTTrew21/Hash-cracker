@@ -50,14 +50,14 @@ def round():
 	os.system('cls')
 	a, b = guess(dic, ans)
 
-	if a:
-		def ques():
-			n = int(input("[0]exit\n[1]print the sha256\n[2]try again\n"))
-			if n == 0: exit()
-			elif n == 1:
-				print(b)
-				ques()
-			elif n == 2: round()
-		ques()
+	def ques():
+		n = int(input("[0]exit\n[1]print the sha256\n[2]try again\n"))
+		if n == 0: exit()
+		elif n == 1:
+			print(b)
+			ques()
+		elif n == 2: round()
+	ques()
 
 round()
+	
