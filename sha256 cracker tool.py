@@ -37,11 +37,17 @@ def guess(d, ans):
 
 def round():
 	os.system('cls')
+	print(
+	f"""{bcolors.OKCYAN}{bcolors.BOLD}
+		|    Welcome!   |
+		| last 2024/3/21|
+	{bcolors.RESET}""")
 	ans = str.lower(input(f"{bcolors.WARNING}{bcolors.BOLD}target(SHA256):{bcolors.RESET}"))
 
 	dic = []
 
 	os.system('cls')
+
 	f = input("Password file:")
 	with open(str(f), mode='r') as file:
 		dic = [line.strip() for line in file.readlines()]
