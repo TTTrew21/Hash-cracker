@@ -14,8 +14,10 @@ class bcolors:
 
 
 
-def guess(d, ans, setting):
+def guess(d, ans):
 	s = False
+
+	print("Trying...")
 
 	for i in range(0, len(d)):
 
@@ -23,12 +25,9 @@ def guess(d, ans, setting):
 
 		if hashed_string == ans:
 			s = True
-			break
-		if setting == "y":
-			print(f'Disabled/{d[i]}/{s}')
-		else:
 			print(f'{hashed_string}/{d[i]}/{s}')
-		
+			break
+			
 	if s:
 		print(f'{bcolors.OK}{bcolors.BOLD}Attack successful.{bcolors.RESET}')
 		return True, hashed_string
@@ -39,7 +38,6 @@ def guess(d, ans, setting):
 def round():
 	os.system('cls')
 	ans = str.lower(input(f"{bcolors.WARNING}{bcolors.BOLD}target(SHA256):{bcolors.RESET}"))
-	setting = str.lower(input("Disable sha256. (y/n)"))
 
 	dic = []
 
@@ -50,7 +48,7 @@ def round():
 
 	i = input(f"{bcolors.WARNING}Enter to start attack.{bcolors.RESET}")
 	os.system('cls')
-	a, b = guess(dic, ans, setting)
+	a, b = guess(dic, ans)
 
 	if a:
 		def ques():
