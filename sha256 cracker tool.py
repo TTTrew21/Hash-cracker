@@ -29,10 +29,10 @@ def guess(d, ans):
 			break
 			
 	if s:
-		print(f'{bcolors.OK}{bcolors.BOLD}Attack successful.{bcolors.RESET}')
+		print(f'{bcolors.OK}{bcolors.BOLD}Succes.{bcolors.RESET}')
 		return True, hashed_string
 
-	print(f'{bcolors.FAIL}{bcolors.BOLD}Attack failed.{bcolors.RESET}')
+	print(f'{bcolors.FAIL}{bcolors.BOLD}Failed.{bcolors.RESET}')
 	return False, ans
 
 def round():
