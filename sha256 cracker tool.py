@@ -50,7 +50,7 @@ def main_round():
     
     # Get the target hash and hash type from the user
     target_hash = input(f"{bcolors.WARNING}{bcolors.BOLD}target hash: {bcolors.RESET}").strip().lower()
-    hash_type = input(f"{bcolors.WARNING}{bcolors.BOLD}hash type (md5, sha1, sha224, sha256, sha384, sha512a): {bcolors.RESET}").strip().lower()
+    hash_type = input(f"{bcolors.WARNING}{bcolors.BOLD}hash type (md5, sha1, sha224, sha256, sha384, sha512): {bcolors.RESET}").strip().lower()
     
     # Mapping user input to hashlib functions
     hash_funcs = {
